@@ -151,7 +151,7 @@
 
     <!-- sugar -->
     <platform name="sugar">
-        <js-module src="src/sugar/accelerometer.js" name="AccelerometerProxy">
+        <js-module src="src/sugar/AccelerometerProxy.js" name="AccelerometerProxy">
             <runs/>
         </js-module>
     </platform>
