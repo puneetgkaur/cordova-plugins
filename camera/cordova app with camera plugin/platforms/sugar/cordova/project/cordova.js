@@ -1392,6 +1392,28 @@ exports.reset();
 
 
 });
+ 
+// file: src/sugar/platform.js
+define("cordova/platform", function(require, exports, module) {
+module.exports = {
+    id: 'sugar',
+    cordovaVersion: '3.5.0',
+    bootstrap: function() {
+        var cordova = require('cordova'),
+            exec = require('cordova/exec'),
+            channel = require("cordova/channel"),
+	    modulemapper = require('cordova/modulemapper');
+
+        require('cordova/modulemapper').clobbers('cordova/exec/proxy', 'cordova.commandProxy');
+	require('cordova/channel').onNativeReady.fire();
+
+
+
+
+    }
+};
+
+});
 
 // file: src/common/pluginloader.js
 define("cordova/pluginloader", function(require, exports, module) {
@@ -1476,7 +1498,6 @@ function injectPluginScript(pathPrefix, finishPluginLoading) {
         catch (e) {
             // Error loading cordova_plugins.js, file not found or something
             // this is an acceptable error, pre-3.0.0, so we just move on.
-            console.log("There was an error loading the plugin : "+e);
             finishPluginLoading();
         }
     }, finishPluginLoading); // also, add script load error handler for file not found
@@ -1510,28 +1531,6 @@ console.log(pathPrefix);
     injectPluginScript(pathPrefix, callback);
 };
 
-
-});
- 
-// file: src/sugar/platform.js
-define("cordova/platform", function(require, exports, module) {
-module.exports = {
-    id: 'sugar',
-    cordovaVersion: '3.5.0',
-    bootstrap: function() {
-        var cordova = require('cordova'),
-            exec = require('cordova/exec'),
-            channel = require("cordova/channel"),
-	    modulemapper = require('cordova/modulemapper');
-
-        require('cordova/modulemapper').clobbers('cordova/exec/proxy', 'cordova.commandProxy');
-	require('cordova/channel').onNativeReady.fire();
-
-
-
-
-    }
-};
 
 });
 

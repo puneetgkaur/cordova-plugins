@@ -22,7 +22,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:rim="http://www.blackberry.com/ns/widgets"
     id="org.apache.cordova.camera"
-    version="0.3.1-dev">
+    version="0.3.0">
     <name>Camera</name>
     <description>Cordova Camera Plugin</description>
     <license>Apache 2.0</license>
@@ -202,6 +202,7 @@
     <!-- windows8 -->
     <platform name="windows8">
 
+        <dependency id="org.apache.cordova.file" />
         <config-file target="package.appxmanifest" parent="/Package/Capabilities">
             <Capability Name="picturesLibrary" />
             <DeviceCapability Name="webcam" />
@@ -216,13 +217,16 @@
     </platform>
 
 
+
     <!-- sugar -->
     <platform name="sugar">
 
-        <js-module src="src/firefoxos/CameraProxy.js" name="CameraProxy">
+        <asset src="src/sugar/sugar-web" target="plugins/org.apache.cordova.camera/src/sugar/sugar-web" />
+        <js-module src="src/sugar/CameraProxy.js" name="CameraProxy">
           <runs />
         </js-module>
 
     </platform>
+
 
 </plugin>

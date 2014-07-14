@@ -29,7 +29,7 @@
 
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" charset="utf-8">
-
+/*
                 document.addEventListener("deviceready", onDeviceReady, false);
 
                 function onDeviceReady() {
@@ -39,6 +39,15 @@
                 }
 
 		
+*/
+
+
+		 function getPicture(){
+		       navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
+					destinationType: Camera.DestinationType.DATA_URL
+				    });
+		 }
+
 
 		function onSuccess(imageData) {
                   console.log(imageData);
@@ -78,7 +87,8 @@
             </div>
 
         </div>
-
+ 
+        <button onclick="getPicture()" title="get picture"></button>
 
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">

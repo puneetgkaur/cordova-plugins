@@ -28,6 +28,8 @@ var www_dir = path.join(__dirname,"..","..","www");
 
 var project_dir=path.join(__dirname,"..","project");
 
+shell.rm('-rf',project_dir);
+
 shell.mkdir('-p',project_dir);
 
 var project_template_dir=path.join(__dirname,"..","..","project_template")

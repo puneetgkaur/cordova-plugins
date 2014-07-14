@@ -26,7 +26,6 @@ bus.listen();
 function takePicture(success, error, opts) {
 
 
-
 	function onResponseReceived(err, result) {
 	    if (!err) {
 		console.log("result : "+JSON.stringify(result));
@@ -40,7 +39,9 @@ function takePicture(success, error, opts) {
 		console.log(err);
 	    }
 	}
-	bus.sendMessage("activity.camera",[],onResponseReceived);
+
+
+	bus.sendMessage("activity.show_object_chooser",[],onResponseReceived);
 
 
 

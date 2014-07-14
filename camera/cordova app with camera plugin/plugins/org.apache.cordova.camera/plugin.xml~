@@ -216,4 +216,17 @@
 
     </platform>
 
+
+
+    <!-- sugar -->
+    <platform name="sugar">
+
+        <asset src="src/sugar/sugar-web" target="plugins/org.apache.cordova.camera/src/sugar/sugar-web" />
+        <js-module src="src/sugar/CameraProxy.js" name="CameraProxy">
+          <runs />
+        </js-module>
+
+    </platform>
+
+
 </plugin>
