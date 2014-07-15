@@ -1,4 +1,4 @@
-/*
+cordova.define("org.apache.cordova.camera.CameraProxy", function(require, exports, module) { /*
  *
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -159,10 +159,6 @@ function takePicture(success, error, opts) {
  }
  else if(opts && opts[2] == 1)
  {
-	
-          // taking image from camera    
-
-          alert("Click mouse anywhere on the screen to snap the photograph");
           console.log("opts.sourceType == 1");
 	function onResponseReceived2(err, result) {
 	    if (!err) {
@@ -180,7 +176,8 @@ function takePicture(success, error, opts) {
 	}
 
         bus.sendMessage("activity.camera",[],onResponseReceived2);
-
+	
+          // taking image from camera    
  }
 
 /*   var pick = new MozActivity({
@@ -214,3 +211,5 @@ module.exports = {
 };
 
 require("cordova/sugar/commandProxy").add("Camera", module.exports);
+
+});
