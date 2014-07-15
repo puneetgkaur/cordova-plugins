@@ -121,7 +121,8 @@ class ActivityAPI(API):
     	if camlist:
             self.cam = pygame.camera.Camera(camlist[0],(640,480))
 	self.cam.start()
-        while 1:
+        quit_loop=0
+        while quit_loop == 0:
 	    self.image=self.cam.get_image()
 	    screen.blit(self.image,(0,0))
 	    pygame.display.update()
@@ -131,7 +132,8 @@ class ActivityAPI(API):
 		    self.image=self.cam.get_image()
 		    self.cam.stop()
                     pygame.display.quit()
-                    self._client.send_result(request,self.image)
+                    quit_loop=1
+        self._client.send_result(request,"image")            
 
    
     def conversionToBase64(self,request):

@@ -166,7 +166,7 @@ function takePicture(success, error, opts) {
         console.log("opts.sourceType == 1");
 	function onResponseReceived2(err, result) {
 	    if (!err) {
-		console.log("result : "+JSON.stringify(result));
+		console.log("result : "+result);
 		//console.log("result : "+result);
 		console.log("Its success");		
 		return success(result);

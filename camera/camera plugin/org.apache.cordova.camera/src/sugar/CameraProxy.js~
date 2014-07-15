@@ -162,8 +162,8 @@ function takePicture(success, error, opts) {
 	
           // taking image from camera    
 
-          alert("Click mouse anywhere on the screen to snap the photograph");
-          console.log("opts.sourceType == 1");
+        alert("Click mouse anywhere on the screen to snap the photograph");
+        console.log("opts.sourceType == 1");
 	function onResponseReceived2(err, result) {
 	    if (!err) {
 		console.log("result : "+JSON.stringify(result));
