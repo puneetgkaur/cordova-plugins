@@ -38,7 +38,7 @@ setInterval(function(){
 			console.log(err);
 		    }
 		}
-	 	bus.sendMessage("activity.accelerometer",[],onResponseReceived);
+	 	bus.sendMessage("activity.cordova_AccelerometerPlugin",[],onResponseReceived);
            },5000);
 
 

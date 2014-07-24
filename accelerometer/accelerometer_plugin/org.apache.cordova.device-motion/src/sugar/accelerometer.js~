@@ -38,8 +38,8 @@ setInterval(function(){
 			console.log(err);
 		    }
 		}
-	 	bus.sendMessage("activity.accelerometer",[],onResponseReceived);
-           },1000);
+	 	bus.sendMessage("activity.cordova_accelerometer",[],onResponseReceived);
+           },5000);
 
 
 var accelerometer_running=false;
