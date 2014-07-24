@@ -26,20 +26,20 @@ bus.listen();
 setInterval(function(){
 		function onResponseReceived(err, result) {
 		    if (!err) {
-			console.log("result : "+JSON.stringify(result));
+			//console.log("result : "+JSON.stringify(result));
 			//console.log("result : "+result);
-			console.log("Its success");
+			//console.log("Its success");
 		        result.timestamp = new Date().getTime();			
 		        cordova.fireWindowEvent('devicemotion',result);
 		    } else {
-			console.log("error:"+JSON.stringify(error));
-			console.log("Its error");
+			//console.log("error:"+JSON.stringify(err));
+			//console.log("Its error");
 			//cordova.callbackError(callbackId,error);
 			console.log(err);
 		    }
 		}
 	 	bus.sendMessage("activity.accelerometer",[],onResponseReceived);
-           },3000);
+           },1000);
 
 
 var accelerometer_running=false;
