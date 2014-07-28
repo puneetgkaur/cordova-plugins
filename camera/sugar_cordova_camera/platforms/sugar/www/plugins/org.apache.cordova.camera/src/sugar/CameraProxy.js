@@ -133,7 +133,7 @@ function takePicture(success, error, opts) {
 		console.log("result : "+JSON.stringify(result));
 		//console.log("result : "+result);
 		console.log("Its success");		
-                read_data(result,function (error, metadata, data) {
+                /*read_data(result,function (error, metadata, data) {
                     
                     try {
                         textdata = JSON.parse(data);
@@ -144,7 +144,7 @@ function takePicture(success, error, opts) {
                         console.log("error in read_data: "+textdata);
                     }
 
-                });
+                });*/
 		return success(result);
 
 	    } else {
