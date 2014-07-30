@@ -32,26 +32,43 @@ var cordova = require('cordova'),
 
 bus.listen();
 
-var type;
 
-function onResponseReceived(err, result) {
-    if (!err) {
-	console.log("result : "+JSON.stringify(result));
-        console.log("Its success");
-        type=result; // should match one of the following - cellular,ethernet,wifi,none in the switch statement in the getConnectionInfo function
-    } else {
-	console.log("error:"+JSON.stringify(error));
-	console.log("Its error");
-    }
-}
-bus.sendMessage("activity.get_network_connection_type",[],onResponseReceived);
 
 
 module.exports = {
 
   getConnectionInfo: function(successCallback, errorCallback) {
-    var connectionType = Connection.UNKNOWN,
-
+    var connectionType = Connection.UNKNOWN;
+	function onResponseReceived(err, result) {
+		if (!err) {
+		    console.log("result : "+JSON.stringify(result));
+		    console.log("Its success");
+		    type=result; // should match one of the following - cellular,ethernet,wifi,none in the switch statement in the getConnectionInfo function
+			if (result != undefined) {
+			  switch(type) {
+				case "cellular":
+				  connectionType = Connection.CELL;
+				  break;
+				case "ethernet":
+				  connectionType = Connection.ETHERNET;
+				  break;
+				case "wifi":
+				  connectionType = Connection.WIFI;
+				  break;
+				case "none":
+				  connectionType = Connection.NONE;
+				  break;
+			  }
+			} 
+			successCallback(connectionType);
+		} else {
+			console.log("error:"+JSON.stringify(error));
+			console.log("Its error");
+      		successCallback(Connection.UNKNOWN);
+		}
+	}
+	bus.sendMessage("activity.cordova_NetworkPlugin",[],onResponseReceived);
+    /*
     if (type != undefined) {
       switch(type) {
         case "cellular":
@@ -68,9 +85,12 @@ module.exports = {
           break;
       }
     } 
-    setTimeout(function() {
+    //setTimeout(function() {
       successCallback(connectionType);
-    }, 5000);
+    //}, 5000);
+    */
+
+
   }
 };
 
