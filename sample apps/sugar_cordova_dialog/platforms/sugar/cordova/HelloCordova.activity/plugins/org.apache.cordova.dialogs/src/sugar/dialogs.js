@@ -39,15 +39,13 @@ var Notification = {
 	    if (!err) {
 		console.log("result : "+JSON.stringify(result));
 		console.log("Its success");
-		_callback();
+		successCallback();
 	    } else {
 		console.log("error:"+JSON.stringify(err));
 		console.log("Its error");
-		errorCallback(err);
 	    }
 	}
- 	bus.sendMessage("activity.cordova_DialogPlugin",['alert',message,title,_buttonLabels],onResponseReceived);
-        
+ 	bus.sendMessage("activity.cordova_DialogPlugin",['alert',message,title,_buttonLabels],onResponseReceived);        
     },
     confirm: function(successCallback, errorCallback, args) {
         var message = args[0];
