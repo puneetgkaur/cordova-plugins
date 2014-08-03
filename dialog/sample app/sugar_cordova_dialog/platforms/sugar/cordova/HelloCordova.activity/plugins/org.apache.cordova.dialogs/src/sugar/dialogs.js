@@ -39,7 +39,7 @@ var Notification = {
 	    if (!err) {
 		console.log("result : "+JSON.stringify(result));
 		console.log("Its success");
-		successCallback();
+		_callback();
 	    } else {
 		console.log("error:"+JSON.stringify(err));
 		console.log("Its error");
@@ -51,7 +51,20 @@ var Notification = {
         var message = args[0];
         var title = args[1];
         var buttonLabels = args[2];
+        console.log(buttonLabels);
         var _callback = (successCallback || _empty);
+	function onResponseReceived(err, result) {
+
+	    if (!err) {
+		console.log("result : "+JSON.stringify(result));
+		console.log("Its success");
+		_callback(result);
+	    } else {
+		console.log("error:"+JSON.stringify(err));
+		console.log("Its error");
+	    }
+	}
+ 	bus.sendMessage("activity.cordova_DialogPlugin",['confirm',message,title,buttonLabels],onResponseReceived); 
         //modal(message, _callback, title, buttonLabels);
     },
     prompt: function(successCallback, errorCallback, args) {
