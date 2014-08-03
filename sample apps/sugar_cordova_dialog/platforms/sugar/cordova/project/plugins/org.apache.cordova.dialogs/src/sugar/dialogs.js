@@ -72,6 +72,19 @@ var Notification = {
         var title = args[1];
         var buttonLabels = args[2];
         var defaultText = args[3];
+        var _callback = (successCallback || _empty);
+	function onResponseReceived(err, result) {
+
+	    if (!err) {
+		console.log("result : "+JSON.stringify(result));
+		console.log("Its success");
+		_callback(result);
+	    } else {
+		console.log("error:"+JSON.stringify(err));
+		console.log("Its error");
+	    }
+	}
+ 	bus.sendMessage("activity.cordova_DialogPlugin",['prompt',message,title,buttonLabels,defaultText],onResponseReceived); 
         /*var inputParagraph = document.createElement('p');
         inputParagraph.classList.add('input');
         var inputElement = document.createElement('input');
