@@ -1,0 +1,1 @@
+cordova__all_plugin_sample
