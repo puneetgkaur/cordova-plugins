@@ -39,7 +39,7 @@ setInterval(function(){
 		    }
 		}
 	 	bus.sendMessage('activity.cordova',['Accelerometer','getCurrentAcceleration',[]],onResponseReceived);
-           },5000);
+           },1000);
 
 
 var accelerometer_running=false;

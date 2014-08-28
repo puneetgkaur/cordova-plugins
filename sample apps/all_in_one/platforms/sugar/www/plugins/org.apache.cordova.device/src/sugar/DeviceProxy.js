@@ -39,7 +39,7 @@ var sugar_uuid="hi";
 			return err;
 		    }
 		}
-	 	bus.sendMessage("activity.cordova_DevicePlugin",['sugar_version'],onResponseReceived1);
+	 	bus.sendMessage("activity.cordova",['Device','sugar_version',[]],onResponseReceived1);
                 
 
 		function onResponseReceived2(err, result) {
@@ -49,7 +49,7 @@ var sugar_uuid="hi";
 			return err;
 		    }
 		}
-	 	bus.sendMessage("activity.cordova_DevicePlugin",['sugar_model'],onResponseReceived2);
+	 	bus.sendMessage("activity.cordova",['Device','sugar_model',[]],onResponseReceived2);
 
 
 
@@ -61,7 +61,7 @@ var sugar_uuid="hi";
 			return err;
 		    }
 		}
-	 	bus.sendMessage("activity.cordova_DevicePlugin",['sugar_uuid'],onResponseReceived3);
+	 	bus.sendMessage("activity.cordova",['Device','sugar_uuid',[]],onResponseReceived3);
 
 
 module.exports = {

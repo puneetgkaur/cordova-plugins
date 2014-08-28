@@ -38,8 +38,8 @@ setInterval(function(){
 			console.log(err);
 		    }
 		}
-	 	bus.sendMessage("activity.cordova_AccelerometerPlugin",[],onResponseReceived);
-           },5000);
+	 	bus.sendMessage('activity.cordova',['Accelerometer','getCurrentAcceleration',[]],onResponseReceived);
+           },1000);
 
 
 var accelerometer_running=false;

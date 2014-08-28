@@ -29,28 +29,11 @@
 
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" charset="utf-8">
-/*
-                document.addEventListener("deviceready", onDeviceReady, false);
 
-                function onDeviceReady() {
-	            navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
-		        destinationType: Camera.DestinationType.DATA_URL
-		    });
-                }
-
-		
-*/
-
-/*
-    Camera.PictureSourceType = {
-            PHOTOLIBRARY : 0,
-            CAMERA : 1,
-            SAVEDPHOTOALBUM : 2
-        };
-*/
+                 //CAMERA PLUGIN
 		 function getPicture1(){ 
 		       console.log("getPicture1");
-		       navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
+		       navigator.camera.getPicture(onSuccess_camera, onFail_camera, { quality: 50,
 					destinationType: Camera.DestinationType.DATA_URL,
                                         sourceType: Camera.PictureSourceType.PHOTOLIBRARY
 				    });
@@ -59,27 +42,22 @@
 
 		 function getPicture2(){
 		       console.log("getPicture2");
-		       navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
+		       navigator.camera.getPicture(onSuccess_camera, onFail_camera, { quality: 50,
 					destinationType: Camera.DestinationType.DATA_URL,
                                         sourceType: Camera.PictureSourceType.CAMERA
 				    });
 		 }
 
-		 function getPicture3(){
-		       console.log("getPicture3");
-		       navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
-					destinationType: Camera.DestinationType.DATA_URL,
-                                        sourceType: Camera.PictureSourceType.SAVEDPHOTOALBUM
-				    });
-		 }
 
-		function onSuccess(imageData) {
+
+		function onSuccess_camera(imageData) {
                   console.log(imageData);
 		    var image = document.getElementById('myImage');
 		    image.src = "data:image/jpeg;base64," + imageData;
+
 		}
 
-		function onFail(message) {
+		function onFail_camera(message) {
 		    alert('Failed because: ' + message);
 		}
 
@@ -97,11 +75,19 @@
             </div>
 
         </div>
-hellloo1
-        <button onclick="getPicture1()" title="get picture">GET PICTURE 1 (Choose from journal) </button>
-        <button onclick="getPicture2()" title="get picture">GET PICTURE 2 (Click from camera)</button>
-        <button onclick="getPicture3()" title="get picture">GET PICTURE 3 (conversion of image to base 64 and display)</button>
-        <br><img id="myImage" width="250px" height="250px"></img>
+        <h1>CAMERA</h1><br><br>
+
+        <button onclick="getPicture1()">Camera - Test 1 </button> get picture from journal
+
+        <br><br>
+
+        <button onclick="getPicture2()">Camera - Test 2 </button> get the picture from camera
+
+        <br>
+        <img id="myImage" width="250px" height="250px"></img>
+
+        <br><br>
+
 
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">

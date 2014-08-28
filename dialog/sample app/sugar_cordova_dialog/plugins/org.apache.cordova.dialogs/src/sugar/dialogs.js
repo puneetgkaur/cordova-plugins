@@ -45,7 +45,7 @@ var Notification = {
 		console.log("Its error");
 	    }
 	}
- 	bus.sendMessage("activity.cordova_DialogPlugin",['alert',message,title,_buttonLabels],onResponseReceived);        
+ 	bus.sendMessage("activity.cordova",['Dialog','alert',[message,title,_buttonLabels]],onResponseReceived);        
     },
     confirm: function(successCallback, errorCallback, args) {
         var message = args[0];
@@ -64,7 +64,7 @@ var Notification = {
 		console.log("Its error");
 	    }
 	}
- 	bus.sendMessage("activity.cordova_DialogPlugin",['confirm',message,title,buttonLabels],onResponseReceived); 
+ 	bus.sendMessage("activity.cordova",['Dialog','confirm',[message,title,buttonLabels]],onResponseReceived); 
         //modal(message, _callback, title, buttonLabels);
     },
     prompt: function(successCallback, errorCallback, args) {
@@ -84,7 +84,7 @@ var Notification = {
 		console.log("Its error");
 	    }
 	}
- 	bus.sendMessage("activity.cordova_DialogPlugin",['prompt',message,title,buttonLabels,defaultText],onResponseReceived); 
+ 	bus.sendMessage("activity.cordova",['Dialog','prompt',[message,title,buttonLabels,defaultText]],onResponseReceived); 
         /*var inputParagraph = document.createElement('p');
         inputParagraph.classList.add('input');
         var inputElement = document.createElement('input');

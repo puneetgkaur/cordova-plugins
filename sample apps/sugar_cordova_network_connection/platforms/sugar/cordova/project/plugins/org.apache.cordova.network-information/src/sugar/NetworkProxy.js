@@ -62,12 +62,12 @@ module.exports = {
 			} 
 			successCallback(connectionType);
 		} else {
-			console.log("error:"+JSON.stringify(error));
+			console.log("error:"+JSON.stringify(err));
 			console.log("Its error");
       		successCallback(Connection.UNKNOWN);
 		}
 	}
-	bus.sendMessage("activity.cordova_NetworkPlugin",[],onResponseReceived);
+	bus.sendMessage("activity.cordova",['Network','alert',[]],onResponseReceived);
     /*
     if (type != undefined) {
       switch(type) {

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <title>ALL PLUGINS</title>
+        
+        <script>
+                //ACCELEROMETER - TEST 1 
+	        // onSuccess: Get a snapshot of the current acceleration
+	        //
+	         function onSuccess_accelerometer1(acceleration) {
+		   alert('Acceleration X: ' + acceleration.x + '\n' +
+		         'Acceleration Y: ' + acceleration.y + '\n' +
+		         'Acceleration Z: ' + acceleration.z + '\n' +
+		         'Timestamp: '      + acceleration.timestamp + '\n');
+	         }
+
+	         // onError: Failed to get the acceleration
+	         //
+	         function onError_accelerometer1() {
+		   alert('onError!');
+	         }
+
+
+
+                 //ACCELEROMETER - TEST 2
+	         // Start watching the acceleration
+	         //
+	         function startWatch() {
+
+		   // Update acceleration every 3 seconds
+		   var options = { frequency: 3000 };
+
+		   watchID = navigator.accelerometer.watchAcceleration(onSuccess_accelerometer2, onError_accelerometer2, options);
+	         }
+
+	         // onSuccess: Get a snapshot of the current acceleration
+	         //
+	         function onSuccess_accelerometer2(acceleration) {
+		  var element = document.getElementById('accelerometer');
+		  element.innerHTML = 'Acceleration X: ' + acceleration.x         + ', ' +
+		                    'Acceleration Y: ' + acceleration.y         + ', ' +
+		                    'Acceleration Z: ' + acceleration.z         + '\n' +
+		                    'Timestamp: '      + acceleration.timestamp + '\n';
+	         }
+
+	         // onError: Failed to get the acceleration
+	         //
+	         function onError_accelerometer2() {
+		   alert('onError!');
+	         }
+
+
+                 //ACCELEROMETER - TEST 3
+	         // Stop watching the acceleration
+	         //
+	         function stopWatch() {
+		   if (watchID) {
+		    navigator.accelerometer.clearWatch(watchID);
+		    watchID = null;
+		   }
+	         }
+
+
+        </script>
+        
+	<link rel="stylesheet" media="not screen and (device-width: 1200px) and (device-height: 900px)"
+	      href="lib/sugar-web/graphics/css/sugar-96dpi.css">
+	<link rel="stylesheet" media="screen and (device-width: 1200px) and (device-height: 900px)"
+	      href="lib/sugar-web/graphics/css/sugar-200dpi.css">
+	<link rel="stylesheet" href="css/activity.css">
+	<script data-main="js/loader" src="lib/require.js"></script>
+    </head>
+    <body>
+
+	<div id="main-toolbar" class="toolbar">
+	  <a href="index.html"><button class="toolbutton" id="activity-button" title="My Activity"></button></a>
+
+          <a href="accelerometer_plugin.html"><button class="toolbutton" id="accelerometer_plugin" title="Accelerometer Plugin"></button></a>
+          <a href="camera_plugin.html"><button class="toolbutton" id="camera_plugin" title="Camera Plugin"></button>
+          <a href="dialog_plugin.html"><button class="toolbutton" id="dialog_plugin" title="Dialog Plugin"></button>
+          <a href="device_plugin.html"><button class="toolbutton" id="device_plugin" title="Device Plugin"></button>
+          <a href="network_plugin.html"><button class="toolbutton" id="network_plugin" title="Network  Plugin"></button>
+          <a href="globalization_plugin.html"><button class="toolbutton" id="globalization_plugin" title="Globalization Plugin"></button></a>
+
+	  <!-- Add more buttons here -->
+
+	  <!-- Buttons with class="pull-right" will be right aligned -->
+	  <button class="toolbutton pull-right" id="stop-button" title="Stop"></button>
+	</div>
+
+    <div id="canvas">
+        
+        <h1>ACCELEROMETER</h1><br><br>
+        <button onclick="navigator.accelerometer.getCurrentAcceleration(onSuccess_accelerometer1, onError_accelerometer1);">Accelerometer - Test 1 </button> navigator.accelerometer.getCurrentAcceleration - Get the current acceleration along the _x_, _y_, and _z_ axes.
+
+        <br><br>
+
+        <button onclick="startWatch();">Accelerometer - Test 2 </button>navigator.accelerometer.watchAcceleration - Retrieves the device's current `Acceleration` at a regular interval, executing
+the `accelerometerSuccess` callback function each time.
+        <br>
+        <div id="accelerometer"></div>
+
+        <br><br>
+
+        <button onclick="stopWatch();">Accelerometer - Test 3 </button> navigator.accelerometer.clearWatch - Stop watching the `Acceleration` referenced by the `watchID` parameter.
+
+        <br><br>
+
+
+   </div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+    </body>
+</html>

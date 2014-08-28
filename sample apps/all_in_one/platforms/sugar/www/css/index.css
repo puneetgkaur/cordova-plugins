@@ -113,3 +113,27 @@ h1 {
     animation:fade 3000ms infinite;
     -webkit-animation:fade 3000ms infinite;
 }
+
+#accelerometer_plugin {
+  background-image: url(../activity/accelerometer.svg);
+}
+
+#camera_plugin {
+  background-image: url(../activity/camera.svg);
+}
+
+#dialog_plugin {
+  background-image: url(../activity/dialog.svg);
+}
+
+#device_plugin {
+  background-image: url(../activity/device.svg);
+}
+
+#globalization_plugin {
+  background-image: url(../activity/globalization.svg);
+}
+
+#network_plugin {
+  background-image: url(../activity/network.svg);
+}

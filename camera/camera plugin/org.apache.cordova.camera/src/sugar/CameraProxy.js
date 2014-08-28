@@ -120,7 +120,7 @@ function takePicture(success, error, opts) {
 	    }
 	}
 
-        bus.sendMessage("activity.cordova_CameraPlugin",['conversionToBase64'],onResponseReceived);
+        bus.sendMessage("activity.cordova",['Camera','conversionToBase64',[]],onResponseReceived);
 	
 
  }
@@ -155,7 +155,7 @@ function takePicture(success, error, opts) {
 	    }
 	}
         
-	bus.sendMessage("activity.cordova_CameraPlugin",['image_chooser'],onResponseReceived1);
+	bus.sendMessage("activity.cordova",['Camera','image_chooser',[]],onResponseReceived1);
  }
  else if(opts && opts[2] == 1)
  {
@@ -180,7 +180,7 @@ function takePicture(success, error, opts) {
 	    }
 	}
 
-        bus.sendMessage("activity.cordova_CameraPlugin",['webcam'],onResponseReceived2);
+        bus.sendMessage("activity.cordova",['Camera','webcam',[]],onResponseReceived2);
 
  }
 

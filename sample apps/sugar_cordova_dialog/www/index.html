@@ -28,54 +28,20 @@
         <title>Hello World</title>
 		<script type="text/javascript" charset="utf-8">
 
-
-		document.addEventListener("deviceready", onDeviceReady, false);
-
-		function onDeviceReady() {
-
-
-		        /*
-				function alertDismissed() {
-						var element = document.getElementById('insert_dialog');
-						element.innerHTML = 'hello !';
-				}
-
-				navigator.notification.alert(
-					'You are the winner!',  // message
-					alertDismissed,         // callback
-					'Game Over',            // title
-					'Done'                  // buttonName
-				);
-		        
-                         */
-
-				function onConfirm(buttonIndex) {
-					alert('You selected button ' + buttonIndex);
-				}
-
-				navigator.notification.confirm(
-					'You are the winner!', // message
-					 onConfirm,            // callback to invoke with index of button pressed
-					'Game Over',           // title
-					['Restart','Exit']     // buttonLabels
-				);
-                        
-
-                         /*
-			    function onPrompt(results) {
-				alert("You selected button number " + results.buttonIndex + " and entered " + results.input1);
-			    }
-
-			    navigator.notification.prompt(
-				'Please enter your name',  // message
-				onPrompt,                  // callback to invoke
-				'Registration',            // title
-				['Ok','Exit'],             // buttonLabels
-				'Jane Doe'                 // defaultText
-			    );
-                         */
-
+                //DIALOG PLUGIN
+		function alertDismissed() {
+				var element = document.getElementById('insert_dialog');
+				element.innerHTML = 'hello !';
 		}
+
+
+		function onConfirm(buttonIndex) {
+			alert('You selected button ' + buttonIndex);
+		}
+
+       	        function onPrompt(results) {
+		        alert("You selected button number " + results.buttonIndex + " and entered " + results.input1);
+	        }
 
 		</script>
     </head>
@@ -88,6 +54,20 @@
                 <p class="event received">Device is Ready</p>
             </div>
         </div>
+
+        <h1>DIALOG PLUGIN</h1><br><br>
+
+        <button onclick="navigator.notification.alert('You are the winner!',alertDismissed,'Game Over','Done');">Dialog - Test 1 </button>  navigator.notification.alert(message, alertCallback, [title], [buttonName]) :<br> message: Dialog message (String), alertCallback : Callback to invoke when alert dialog is dismissed (Function), <br>title: Dialog title(String) (Optional, defaults to `Alert`),<br> buttonName: Button name (String) (Optional, defaults to `OK`)
+
+        <br><br>
+
+        <button onclick="navigator.notification.confirm('You are the winner!',onConfirm,'Game Over',['Restart','Exit']);">Dialog - Test 2 </button>navigator.notification.confirm(message, confirmCallback, [title], [buttonLabels]) - <br> message: Dialog message (String), <br> confirmCallback: Callback to invoke with index of button pressed (1, 2, or 3) or when the dialog is dismissed without a button press (0) (Function),<br> title: Dialog title (String)(Optional, defaults to `Confirm`) <br> buttonLabels:  Array of strings specifying button labels(Array)(Optional, defaults to [`OK,Cancel`])
+
+        <br><br>
+
+        <button onclick="navigator.notification.prompt('Please enter your name',onPrompt,'Registration',['Ok','Exit'],'Jane Doe');">Dialog - Test 2 </button> navigator.notification.prompt - Displays a native dialog box that is more customizable than the browser's `prompt` function - navigator.notification.prompt(message, promptCallback, [title], [buttonLabels], [defaultText]) :: message:<br> Dialog message.(String) ; <br>promptCallback: Callback to invoke with index of button pressed (1, 2, or 3) or when the dialog is dismissed without a button press (0). (Function);<br> title: Dialog title(String) (Optional, defaults to `Prompt`) ;<br> buttonLabels: Array of strings specifying button labels (Array) (Optional, defaults to `["OK","Cancel"]`); <br> defaultText: Default textbox input value (`String`) (Optional, Default: empty string)
+
+        <br><br>
 
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>

@@ -67,7 +67,7 @@ module.exports = {
       		successCallback(Connection.UNKNOWN);
 		}
 	}
-	bus.sendMessage("activity.cordova_NetworkPlugin",['alert'],onResponseReceived);
+	bus.sendMessage("activity.cordova",['Network','alert',[]],onResponseReceived);
     /*
     if (type != undefined) {
       switch(type) {

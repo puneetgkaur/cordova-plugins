@@ -28,85 +28,62 @@
         <title>Hello World</title>
 <script type="text/javascript" charset="utf-8">
 	
-/*ACCELEROMETER FIRST TEST*/
-/*
-    // Wait for device API libraries to load
-    //
-    document.addEventListener("deviceready", onDeviceReady, false);
+                //ACCELEROMETER - TEST 1 
+	        // onSuccess: Get a snapshot of the current acceleration
+	        //
+	         function onSuccess_accelerometer1(acceleration) {
+		   alert('Acceleration X: ' + acceleration.x + '\n' +
+		         'Acceleration Y: ' + acceleration.y + '\n' +
+		         'Acceleration Z: ' + acceleration.z + '\n' +
+		         'Timestamp: '      + acceleration.timestamp + '\n');
+	         }
 
-    // device APIs are available
-    //
-    function onDeviceReady() {
-        navigator.accelerometer.getCurrentAcceleration(onSuccess, onError);
-    }
-
-    // onSuccess: Get a snapshot of the current acceleration
-    //
-    function onSuccess(acceleration) {
-        alert('Acceleration X: ' + acceleration.x + '\n' +
-              'Acceleration Y: ' + acceleration.y + '\n' +
-              'Acceleration Z: ' + acceleration.z + '\n' +
-              'Timestamp: '      + acceleration.timestamp + '\n');
-    }
-
-    // onError: Failed to get the acceleration
-    //
-    function onError() {
-        alert('onError!');
-    }
-*/
-/*ACCELEROMETER FIRST TEST END */
-
-/*ACCELEROMETER SSECOND TEST */
+	         // onError: Failed to get the acceleration
+	         //
+	         function onError_accelerometer1() {
+		   alert('onError!');
+	         }
 
 
-    // The watch id references the current `watchAcceleration`
-    var watchID = null;
 
-    // Wait for device API libraries to load
-    //
-    document.addEventListener("deviceready", onDeviceReady, false);
+                 //ACCELEROMETER - TEST 2
+	         // Start watching the acceleration
+	         //
+	         function startWatch() {
 
-    // device APIs are available
-    //
-    function onDeviceReady() {
-        startWatch();
-    }
+		   // Update acceleration every 3 seconds
+		   var options = { frequency: 3000 };
 
-    // Start watching the acceleration
-    //
-    function startWatch() {
+		   watchID = navigator.accelerometer.watchAcceleration(onSuccess_accelerometer2, onError_accelerometer2, options);
+	         }
 
-        // Update acceleration every 3 seconds
-        var options = { frequency: 3000 };
+	         // onSuccess: Get a snapshot of the current acceleration
+	         //
+	         function onSuccess_accelerometer2(acceleration) {
+		  var element = document.getElementById('accelerometer');
+		  element.innerHTML = 'Acceleration X: ' + acceleration.x         + ', ' +
+		                    'Acceleration Y: ' + acceleration.y         + ', ' +
+		                    'Acceleration Z: ' + acceleration.z         + '\n' +
+		                    'Timestamp: '      + acceleration.timestamp + '\n';
+	         }
 
-        watchID = navigator.accelerometer.watchAcceleration(onSuccess1, onError1, options);
-    }
+	         // onError: Failed to get the acceleration
+	         //
+	         function onError_accelerometer2() {
+		   alert('onError!');
+	         }
 
-    // Stop watching the acceleration
-    //
-    function stopWatch() {
-        if (watchID) {
-            navigator.accelerometer.clearWatch(watchID);
-            watchID = null;
-        }
-    }
 
-    // onSuccess: Get a snapshot of the current acceleration
-    //
-    function onSuccess1(acceleration) {
-        var element = document.getElementById('accelerometer');
-        element.innerHTML = 'Acceleration X: ' + acceleration.x         + ', ' +
-                            'Acceleration Y: ' + acceleration.y         + ', ' +
-                            'Acceleration Z: ' + acceleration.z         + '\n' +
-                            'Timestamp: '      + acceleration.timestamp + '\n';
-    }
+                 //ACCELEROMETER - TEST 3
+	         // Stop watching the acceleration
+	         //
+	         function stopWatch() {
+		   if (watchID) {
+		    navigator.accelerometer.clearWatch(watchID);
+		    watchID = null;
+		   }
+	         }
 
-    // onError: Failed to get the acceleration
-    //
-    function onError1() {
-        alert('onError!');
-    }
 
     </script>
     </head>
@@ -119,11 +96,22 @@
             </div>
         </div>
 
-        <!--FIRST TEST = alert with the acceleration values<br><br>-->
-        SECOND TEST : Updating the accelerometer values<br>
-        <div id="accelerometer">Waiting for accelerometer...</div><br><br>
-        THIRD TEST : Stopping the updation<br>
-        <button onclick="stopWatch();">Stop Watching</button>
+        <h1>ACCELEROMETER</h1><br><br>
+        <button onclick="navigator.accelerometer.getCurrentAcceleration(onSuccess_accelerometer1, onError_accelerometer1);">Accelerometer - Test 1 </button> navigator.accelerometer.getCurrentAcceleration - Get the current acceleration along the _x_, _y_, and _z_ axes.
+
+        <br><br>
+
+        <button onclick="startWatch();">Accelerometer - Test 2 </button>navigator.accelerometer.watchAcceleration - Retrieves the device's current `Acceleration` at a regular interval, executing
+the `accelerometerSuccess` callback function each time.
+        <br>
+        <div id="accelerometer"></div>
+
+        <br><br>
+
+        <button onclick="stopWatch();">Accelerometer - Test 3 </button> navigator.accelerometer.clearWatch - Stop watching the `Acceleration` referenced by the `watchID` parameter.
+
+        <br><br>
+
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">

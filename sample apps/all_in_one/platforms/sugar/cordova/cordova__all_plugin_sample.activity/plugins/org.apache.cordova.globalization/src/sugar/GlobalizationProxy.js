@@ -38,7 +38,7 @@ var globalization = {
                 failureCB(err);
 	    }
 	}
- 	bus.sendMessage("activity.cordova_GlobalizationPlugin",['getPreferredLanguage'],onResponseReceived);
+ 	bus.sendMessage("activity.cordova",['Globalization','getPreferredLanguage',[]],onResponseReceived);
     },
     getLocaleName:function(successCB, failureCB) {
 
@@ -54,7 +54,7 @@ var globalization = {
                 failureCB(err);
 	    }
 	}
- 	bus.sendMessage("activity.cordova_GlobalizationPlugin",['getLocaleName'],onResponseReceived);
+ 	bus.sendMessage("activity.cordova",['Globalization','getLocaleName',[]],onResponseReceived);
     }
 };
 
