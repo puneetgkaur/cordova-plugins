@@ -62,30 +62,6 @@ var Accelerometer = {
 
 
         console.log("accelerometer_running = "+accelerometer_running);
-/*
-
-	function onResponseReceived(err, result) {
-
-	    if (!err) {
-		//successhandler(result);
-		console.log("result : "+JSON.stringify(result));
-		//console.log("result : "+result);
-
-		console.log("Its success");
-		
-		success(result);
-
-	    } else {
-		console.log("error:"+JSON.stringify(error));
-		console.log("Its error");
-
-		error(err);
-	    }
-	}
-
-
- 	bus.sendMessage("activity.accelerometer",[],onResponseReceived);
-*/
 
         return window.addEventListener('devicemotion', function(ev) {
             listener(success, ev);
